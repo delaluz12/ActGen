@@ -1,5 +1,5 @@
 body {
-    
+
 }
 .resultsContainer{
     margin-top: 3rem;
@@ -15,6 +15,5 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    
+ 
 }

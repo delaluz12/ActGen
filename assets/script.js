@@ -22,4 +22,6 @@ jQuery(function( $ ) {
         .catch(function (error) {
             alert('Error connecting to API server');
         });
+
+        console.log($('option'));
   });
