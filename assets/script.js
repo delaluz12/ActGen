@@ -36,7 +36,7 @@ jQuery(function ($) {
                         // console.log(data.price)
                         var catPrice = data.price;
                         console.log(catPrice);
-                        //pass to displayResults function ====> displayResults (catActivity, catAccess, catCategory, catParticipants, catPrice)
+                        //DisplayResults (catActivity, catAccess, catCategory, catParticipants, catPrice)
                         //pass activity to search yt videos ====> searchVideos(catActivity);
                     })
                 } else {
@@ -50,13 +50,49 @@ jQuery(function ($) {
     }
 
 
-
+    //Materialize 
     $('select').formSelect();
 
+    //Random search button
+    function randomgenerator(){
+        var randomurl = 'https://www.boredapi.com/api/activity?type=recreational'
+        fetch(randomurl)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (data) {
+                        console.log('Random Search');
+                        console.log(data)
+                        // console.log(data.activity);
+                        var catActivity = data.activity;
+                        console.log(catActivity);
+                        // console.log(((data.accessibility)*100) + '%')
+                        var catAccess = ((data.accessibility)*100) + '%';
+                        console.log(catAccess);
+                        // console.log(data.type)
+                        var catCategory= data.type;
+                        console.log(catCategory);
+                        // console.log(data.participants)
+                        var catParticipants = data.participants;
+                        console.log(catParticipants);
+                        // console.log(data.price)
+                        var catPrice = data.price;
+                        console.log(catPrice);
+                        //DisplayResults (catActivity, catAccess, catCategory, catParticipants, catPrice)
+                        //pass activity to search yt videos ====> searchVideos(catActivity);
+                    })
+                } else {
+                    alert('Error: ' + response.statusText);
+                }
+            })
+            .catch(function (error) {
+                alert('Error connecting to API server');
+        });}
 
+ //Button Listener for random search 
 
-
-
-
+$('#random').on('click', randomgenerator)
 
 });
+
+
+
