@@ -55,7 +55,7 @@ jQuery(function ($) {
 
     //Random search button
     function randomgenerator(){
-        var randomurl = 'https://www.boredapi.com/api/activity?type=recreational'
+        var randomurl = 'http://www.boredapi.com/api/activity/'
         fetch(randomurl)
             .then(function (response) {
                 if (response.ok) {
