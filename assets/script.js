@@ -1,9 +1,7 @@
 $(document).ready(function () {
 
     var categoryCall = function (category) {
-
         //make call to gather category endpoint data
-
         var categoryUrl = 'https://www.boredapi.com/api/activity?type=' + category
         fetch(categoryUrl)
             .then(function (response) {
@@ -93,7 +91,6 @@ $(document).ready(function () {
         });
 
     }
-
 
 
     //Materialize 
