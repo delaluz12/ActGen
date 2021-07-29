@@ -1,8 +1,13 @@
-body {
-/* overall fonts we want to invoke on page */
+/* body {
+overall fonts we want to invoke on page
+} */
+nav{
+    font-family:'Russo One', sans-serif;  
 }
+
 .resultsContainer{
     margin-top: 3rem;
+    font-family: 'Open Sans', sans-serif;
 }
 .results {
    text-align: center; 
@@ -15,4 +20,5 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Open Sans', sans-serif;
 }
