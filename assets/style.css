@@ -1,5 +1,5 @@
 body {
-
+/* overall fonts we want to invoke on page */
 }
 .resultsContainer{
     margin-top: 3rem;
@@ -8,8 +8,7 @@ body {
    text-align: center; 
 }
 .resultsVideo {
-    margin: 1rem;
-    
+    margin: 1rem;    
 }
 
 .searchContainer{
