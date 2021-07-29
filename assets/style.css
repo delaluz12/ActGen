@@ -1,4 +1,5 @@
 body {
+
 }
 .resultsContainer{
     margin-top: 3rem;
@@ -8,4 +9,10 @@ body {
 }
 .resultsVideo {
     margin: 1rem;
+}
+
+.searchContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

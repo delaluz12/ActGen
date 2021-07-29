@@ -23,7 +23,6 @@
 <body>
 
 
-
     <!-- MARIA ADDITIONS -->
     <!-- navigation -->
     <nav>
@@ -34,25 +33,44 @@
             </ul>
         </div>
     </nav>
+    <!--Gavin-->
+    <div class="container searchContainer">
 
-    <div class="container">
-        <!-- MARIA TESTING -->
-        <div class="input-field col s12">
-            <select>
-                <option class='testing' value="" disabled selected>Select category</option>
-                <option class='testing' value="education">Education</option>
-                <option class='testing' value=""recreational>Recreational</option>
-                <option class='testing' value="social">Social</option>
-                <option class='testing' value="diy">DIY</option>
-                <option class='testing' value="charity">Charity</option>
-                <option class='testing' value="cooking">Cooking</option>
-                <option class='testing' value="relaxation">Relaxation</option>
-                <option class='testing' value="music">Music</option>
-                <option class='testing' value="busywork">Busywork</option>
-            </select>
-            <label>Materialize Select</label>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Card Title</span>
+                        <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
+        <a class="waves-effect waves-light btn-large" id= "random">Random Search</a>
+
+        <div>
+            <label>Category</label>
+            <select class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="education">Education</option>
+                <option value="recreational">Recreational</option>
+                <option value="diy">DIY</option>
+                <option value="charity">Charity</option>
+                <option value="cooking">Cooking</option>
+                <option value="relaxation">Relaxation</option>
+                <option value="music">Music</option>
+                <option value="busywork">Busywork</option>
+            </select>
+            <a class="waves-effect waves-light btn-large" id="categorySearch">Search</a>
+        </div>
+
+
+
     </div>
+
     <!-- results container - Maria -->
     <div class="container resultsContainer">
         <div class="row">
@@ -76,18 +94,18 @@
             </div>
             <div class="col s4">
                 <div class="video-container resultsVideo" id="player_1">
-                    <iframe src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/k8yJCeuP6I8" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="video-container resultsVideo" id="player_2">
-                    <iframe src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/k8yJCeuP6I8" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col s4">
                 <div class="video-container resultsVideo" id="player_3">
-                    <iframe src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/k8yJCeuP6I8" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="video-container resultsVideo" id="player_4">
-                    <iframe src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/k8yJCeuP6I8" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -98,7 +116,7 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Materalize -->
+    <!-- materalize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- jQueryUI -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
