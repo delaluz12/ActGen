@@ -86,7 +86,7 @@ $(document).ready(function () {
     //displayVideo function
     var displayVideos = function (array) {
         //each method to loop through each element with class=player and change src
-        $('.player').each(function(index){
+        $('.player').each(function (index) {
             $(this).attr('src', `https://www.youtube.com/embed/${array[index]}?enablejsapi=1`)
         });
 
@@ -104,6 +104,7 @@ $(document).ready(function () {
         //pass value to make api call
         categoryCall(categoryClicked);
     })
+
 
 
 

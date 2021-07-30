@@ -4,7 +4,16 @@ overall fonts we want to invoke on page
 nav{
     font-family:'Russo One', sans-serif;  
 }
-
+.searchContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+}
+.card-title-text{
+    font-family:'Russo One', sans-serif;
+    word-spacing: 1.5rem;
+}
 .resultsContainer{
     margin-top: 3rem;
     font-family: 'Open Sans', sans-serif;
@@ -14,11 +23,4 @@ nav{
 }
 .resultsVideo {
     margin: 1rem;    
-}
-
-.searchContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Open Sans', sans-serif;
 }
