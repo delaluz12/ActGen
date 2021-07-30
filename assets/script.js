@@ -105,6 +105,24 @@ $(document).ready(function () {
         categoryCall(categoryClicked);
     })
 
+  //Save function
+  $('#save').on('click',function () {
+    
+    var newfav=[]
+    $("#actcontainer").find("li").each(function()
+    {   var $li=$(this);    
+       newfav.push($li.text()) 
+    })
+    console.log(newfav) 
+    favorites =JSON.parse(localStorage.getItem('favs')) || []
+    favorites.push(newfav)
+    console.log(favorites) 
+    
+    localStorage.setItem("favs", JSON.stringify(favorites));
+    
+    
+    })  
+
 
 
 });
