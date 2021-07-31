@@ -130,8 +130,41 @@ $(document).ready(function () {
 
 
 
+    displayfavs()
+//Render saved activities
+    function displayfavs(favorites){
+        favorites=JSON.parse(localStorage.getItem('favs')) || []
+        cardcont=$('#container')
 
+        for (let i = 0; i < favorites.length; i++){
+                
+        var card ='<div class="col s4">'+
+                '<div class="card blue-grey darken-1">'+
+                    '<div class="card-content white-text">'+
+                    '<span class="card-title">Idea For You</span>'+
+                    '<ul id="list">'+
+                        '<li>'+favorites[i][0]+'</li>'+
+                        '<li>'+favorites[i][1]+'</li>'+
+                        '<li>'+favorites[i][2]+'</li>'+
+                        '<li>'+favorites[i][3]+'</li>'+
+                        '<li>'+favorites[i][4]+'</li>'+
+                        
+                    '</ul>'+
+                '</div>'+
+                '</div>'+
+            '</div>';
+            cardcont.append(card)     
+        }
 
+        //Reset Favorites
+        $('#reset').on('click',function () {
+            localStorage.removeItem("favs");
+            location.reload()
+        
+        })
+
+    }
+    
 });
 
 
