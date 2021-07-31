@@ -30,6 +30,8 @@ $(document).ready(function () {
 
     //Random search button
     function randomgenerator() {
+        //fade out search container on click
+        $('.searchContainer').toggle('fade');
         var randomurl = 'http://www.boredapi.com/api/activity/'
         fetch(randomurl)
             .then(function (response) {
@@ -103,7 +105,29 @@ $(document).ready(function () {
         var categoryClicked = $('.browser-default').val();
         //pass value to make api call
         categoryCall(categoryClicked);
+        //fade out search container on click
+        $('.searchContainer').toggle('fade');
     })
+
+    //Save function
+    $('#save').on('click', function () {
+
+        var newfav = []
+        $("#actcontainer").find("li").each(function () {
+            var $li = $(this);
+            newfav.push($li.text())
+        })
+        console.log(newfav)
+        favorites = JSON.parse(localStorage.getItem('favs')) || []
+        favorites.push(newfav)
+        console.log(favorites)
+
+        localStorage.setItem("favs", JSON.stringify(favorites));
+
+
+    });
+    
+
 
 
 
