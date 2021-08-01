@@ -100,7 +100,7 @@ $(document).ready(function () {
   //yt call function
   var searchVideos = function (keywords) {
     //youtube call to get search results of activity searched & video ids
-    var apiKey = "AIzaSyCVRYtaSMFw5Z8fuAn7_5Pg50iUP4UtRK0";
+    var apiKey = "";
     var ytUrl =
       "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=" +
       keywords +
