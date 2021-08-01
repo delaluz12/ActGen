@@ -30,39 +30,39 @@ $(document).ready(function () {
         alert("Error connecting to API server");
       });
   };
-//passing string to cost,Accessibility.
+  //passing string to cost,Accessibility.
   function DisplayResults(param1, param2, param3, param4, param5) {
     var access = "";
     var costAll = "";
 
     if (param5 <= 0.3) {
-        //easy
-        costAll = "Low";
-      } else if (param5 > 0.3 && param5 < 0.8) {
-        //meduim
-        costAll = "Meduim";
-      } else if(param5 >0.7) {
-        //high
-        costAll = "High";
-  
-      } else {
-        costAll= param5;
-      }
+      //easy
+      costAll = "Low";
+    } else if (param5 > 0.3 && param5 < 0.8) {
+      //meduim
+      costAll = "Meduim";
+    } else if (param5 > 0.7) {
+      //high
+      costAll = "High";
+
+    } else {
+      costAll = param5;
+    }
 
     if (param2 <= 0.3) {
       //easy
-     access = "Easy";
+      access = "Easy";
     } else if (param2 > 0.3 && param2 < 0.8) {
       //meduim
       access = "Meduim";
-    } else if(param2 >0.7) {
+    } else if (param2 > 0.7) {
       //hard
       access = "Hard";
 
     } else {
-        access= param2;
+      access = param2;
     }
- console.log("accessbility -score ", access);
+    console.log("accessbility -score ", access);
     $("#allactivity").text(param1);
     $("#allaccess").text(access);
     $("#alltype").text(param3);
@@ -78,7 +78,7 @@ $(document).ready(function () {
         if (response.ok) {
           response.json().then(function (data) {
             var Activity = data.activity;
-            var Access = data.accessibility * 100 + "%";
+            var Access = data.accessibility;
             var Category = data.type;
             var Participants = data.participants;
             var Price = data.price;
@@ -95,7 +95,7 @@ $(document).ready(function () {
         alert("Error connecting to API server");
       });
   }
-  
+
 
   //yt call function
   var searchVideos = function (keywords) {
@@ -155,52 +155,43 @@ $(document).ready(function () {
   $("#save").on("click", function () {
     var newfav = [];
     $("#actcontainer")
-      .find("li")
+      .find("span")
       .each(function () {
         var $li = $(this);
         newfav.push($li.text());
       });
-    console.log(newfav);
     favorites = JSON.parse(localStorage.getItem("favs")) || [];
     favorites.push(newfav);
-    console.log(favorites);
+
 
     localStorage.setItem("favs", JSON.stringify(favorites));
   });
 
-  displayfavs();
+  displayfavs()
   //Render saved activities
   function displayfavs(favorites) {
-    favorites = JSON.parse(localStorage.getItem("favs")) || [];
-    cardcont = $("#container");
+    favorites = JSON.parse(localStorage.getItem('favs')) || []
+    cardcont = $('#container')
+    $('#container').empty()
 
     for (let i = 0; i < favorites.length; i++) {
-      var card =
-        '<div class="col s4">' +
+
+      var card = '<div class="col s4 clickable"  value="' + favorites[i][0] + '" arraynumber=' + i + '>' +
         '<div class="card blue-grey darken-1">' +
         '<div class="card-content white-text">' +
         '<span class="card-title">Idea For You</span>' +
-        '<ul id="list">' +
-        "<li>" +
-        favorites[i][0] +
-        "</li>" +
-        "<li>" +
-        favorites[i][1] +
-        "</li>" +
-        "<li>" +
-        favorites[i][2] +
-        "</li>" +
-        "<li>" +
-        favorites[i][3] +
-        "</li>" +
-        "<li>" +
-        favorites[i][4] +
-        "</li>" +
-        "</ul>" +
-        "</div>" +
-        "</div>" +
-        "</div>";
-      cardcont.append(card);
+        '<ul id="list" >' +
+        '<li>Activity: ' + favorites[i][0] + '</li>' +
+        '<li>Accessibility: ' + favorites[i][1] + '</li>' +
+        '<li>Category: ' + favorites[i][2] + '</li>' +
+        '<li># of Participants: ' + favorites[i][3] + '</li>' +
+        '<li>Cost: ' + favorites[i][4] + '</li>' +
+
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+      cardcont.append(card)
     }
 
     //Reset Favorites
@@ -209,4 +200,31 @@ $(document).ready(function () {
       location.reload();
     });
   }
+
+  //Clicking card opens results
+  $('.clickable').on('click', function () {
+    var clicked = $(this).attr('value');
+    var arraynumber = $(this).attr('arraynumber');
+
+    favorites = JSON.parse(localStorage.getItem('favs')) || [];
+    favcall = [clicked, arraynumber];
+    localStorage.setItem("favcall", JSON.stringify(favcall));
+    window.open("../index.html")
+  })
+
+  //pull favorite card from storage which will be deleted after functions run
+  var favcall = JSON.parse(localStorage.getItem("favcall")) || []
+
+  //if there is a favorite card call send to results page 
+  if (favcall.length > 1) {
+    favorites = JSON.parse(localStorage.getItem('favs')) || []
+    clicked = favcall[0]
+    arraynumber = favcall[1]
+
+    DisplayResults(favorites[arraynumber][0], favorites[arraynumber][1], favorites[arraynumber][2], favorites[arraynumber][3], favorites[arraynumber][4]);
+    searchVideos(clicked);
+    localStorage.removeItem("favcall");
+  }
+
+
 });
