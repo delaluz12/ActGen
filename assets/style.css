@@ -58,6 +58,9 @@ nav{
 .card-content p {
     line-height: 1.5rem;
 }
+.actCards{
+    line-height: 1.5rem;
+}
 .hidden{
     display: none;
 }
@@ -69,3 +72,4 @@ nav{
     font-family: 'Open Sans', sans-serif;
     font-size: 1.25rem;
 }
+
