@@ -11,9 +11,11 @@ nav{
     font-family: 'Open Sans', sans-serif;
     margin-top: 1rem;
 }
+#categorySearch{
+    margin-top: 10px;
+}
 .card-title-text{
     font-family:'Russo One', sans-serif;
-    word-spacing: 1.5rem;
 }
 .resultsContainer{
     margin-top: 3rem;
@@ -34,10 +36,36 @@ nav{
     font-family:'Russo One', sans-serif; 
     
 }
+.btn-large:active{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
+    
+}
 .btn{
-    background-color: #00695c;
+    background-color: #00897b
     font-family: 'Open Sans', sans-serif;
+}
+.btn:hover{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
+    
+}
+.btn:active{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
+    
 }
 .card-content p {
     line-height: 1.5rem;
+}
+.hidden{
+    display: none;
+}
+/* alert */
+.alert-header {
+    font-family:'Russo One', sans-serif; 
+}
+.alert-text{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
+    <title>ActGen Home</title>
 
     <!-- css Reset CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&display=swap" rel="stylesheet">
+
     <!-- Framework CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -29,75 +30,102 @@
 
 <body>
 
+    <!-- testing -->
 
     <!-- MARIA ADDITIONS -->
     <!-- navigation -->
     <nav>
         <div class="nav-wrapper green lighten-5">
-            <a href="./index.html" class="brand-logo center grey-text text-darken-1">ProjectName</a>
+            <a href="./index.html" class="brand-logo center teal-text text-darken-4">ActGen</a>
             <ul id="nav-mobile" class="right">
-                <li><a class="grey-text text-darken-1" href="./assets/favorites.html">Favorites</a></li>
+                <li><a class="teal-text text-darken-4" href="./assets/favorites.html">Favorites</a></li>
             </ul>
         </div>
     </nav>
+
     <!--Gavin-->
     <div class="container searchContainer">
 
-        <class class="row">
-            <div class="col s6 m6">
+        <div class="row">
+            <div class="col s12 m12 l6">
                 <div class="card teal darken-4">
                     <div class="card-content white-text">
                         <span class="card-title center card-title-text">Bored?</span>
                         <p>Got some free time and can't think of something to do? <br> We've got you covered! <br>
-                            PROJECTNAME will help you generate different activities and videos relating to that
+                            ActGen will help you generate different activities and videos relating to that
                             activity. Go out and do the activity using the generated activity and related information.
                             Or maybe you want to do a bit more research on the activity before getting started. No
-                            worries - browse the genereated videos relating to the activity.</p>
-                    </div>
-                    <div class="card-action">
-                        <p>Generate random activity by clicking on 'Random'. <br>Search by 'Categories' to narrow your
-                            interests.</p>
+                            worries! Browse the genereated videos relating to the activity.</p>
                     </div>
 
                 </div>
             </div>
 
 
-            
+            <div class="col s12 m12 l6">
+                <div class="card teal darken-1">
 
-            <div class="col s4 m4">
-                <a class="waves-effect btn-large" id="random">Random</a>
-                <label>Category</label>
-                <select class="browser-default">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="education">Education</option>
-                    <option value="recreational">Recreational</option>
-                    <option value="diy">DIY</option>
-                    <option value="charity">Charity</option>
-                    <option value="cooking">Cooking</option>
-                    <option value="relaxation">Relaxation</option>
-                    <option value="music">Music</option>
-                    <option value="busywork">Busywork</option>
-                </select>
-                <a class="waves-effect waves-light btn-large" id="categorySearch">Search</a>
+                    <div class="card-content white-text">
+                        <span class="card-title card-title-text center">Generate Random Activity</span>
+                        <div class="card-action center">
+                            <a class="waves-effect btn-large" id="random">Random</a>
+                        </div>
+                    </div>
+                    <div class="card-content white-text">
+
+                        <span class="card-title card-title-text center">Generate Activity by Category</span>
+                        <div class="card-action center">
+                            <div>
+
+                                <select class="browser-default">
+                                    <option value="" disabled selected>Select category</option>
+                                    <option value="education">Education</option>
+                                    <option value="recreational">Recreational</option>
+                                    <option value="diy">DIY</option>
+                                    <option value="charity">Charity</option>
+                                    <option value="cooking">Cooking</option>
+                                    <option value="relaxation">Relaxation</option>
+                                    <option value="music">Music</option>
+                                    <option value="busywork">Busywork</option>
+                                </select>
+                                <a class="waves-effect waves-light btn-large" id="categorySearch">Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
-        </div></class>
-
-
-
-
-
-
+        </div>
     </div>
+
+
+
+    <!-- Modal Structure 'category' -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h5 class="center alert-header">ALERT</h5>
+            <p class="center alert-text">Please select a category</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn-flat"><i class="far fa-window-close"></i></a>
+        </div>
+    </div>
+    <!-- Modal Structure 'alert -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h5 class="center alert-header">ALERT</h5>
+            <p class="center alert-text">Please select a category</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn-flat"><i class="far fa-window-close"></i></a>
+        </div>
+    </div>
+   
 
     <!-- results container - Maria -->
     <div class="container resultsContainer">
         <div class="row">
-            <div class="col s4">
-                <div class="card teal darken-1">
+            <div class="col s12 m12 l8 xl4">
+                <div class="card teal darken-4">
                     <div class="card-content white-text">
                         <span class="card-title">Idea For You</span>
                         <ul id="actcontainer">
@@ -110,11 +138,11 @@
                     </div>
                     <div class="card-action">
                         <a class="waves-effect waves-light btn" id="save">Save</a>
-                        <a class="right waves-effect waves-light btn">Home</a>
+                        <a class="right waves-effect waves-light btn" id="home">Home</a>
                     </div>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s12 m12 l12 xl4">
                 <div class="video-container">
                     <iframe class="player resultsVideo" src="" frameborder="0"></iframe>
                 </div>
@@ -122,7 +150,7 @@
                     <iframe class="player resultsVideo" src="" frameborder="0"></iframe>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s12 m12 l12 xl4">
                 <div class="video-container" id="player_3">
                     <iframe class="player resultsVideo" src="" frameborder="0"></iframe>
                 </div>
@@ -138,13 +166,15 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- materalize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- jQueryUI -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <!-- materalize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <!-- our Script -->
     <script src="./assets/script.js"></script>
+
 </body>
 
 </html>

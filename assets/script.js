@@ -1,8 +1,12 @@
 $(document).ready(function () {
+    //hide results container on load
+    $('.resultsContainer').addClass('hidden')
+
 
     var categoryCall = function (category) {
         //make call to gather category endpoint data
-        var categoryUrl = 'https://www.boredapi.com/api/activity?type=' + category
+
+        var categoryUrl = 'https://www.boredapi.com/api/activity?type=' + category;
         fetch(categoryUrl)
             .then(function (response) {
                 if (response.ok) {
@@ -16,22 +20,33 @@ $(document).ready(function () {
                         //DisplayResults (catActivity, catAccess, catCategory, catParticipants, catPrice)
                         //pass activity to search yt videos
                         searchVideos(catActivity);
+
                     })
                 } else {
-                    alert('Error: ' + response.statusText);
+                    $('#modal2 .alert-text').text('Error: ' + response.status);
+                    $('#modal2').modal('open','onCloseEnd');
+
+
                 }
             })
             .catch(function (error) {
-                alert('Error connecting to API server');
-            });
+                $('#modal2 .alert-text').text(error);
+                $('#modal2').modal('open', 'onCloseEnd');
+                
+
+            })
+
+
 
     }
+
 
 
     //Random search button
     function randomgenerator() {
         //fade out search container on click
-        $('.searchContainer').toggle('fade');
+        $('.searchContainer').hide('fade');
+        $('.resultsContainer').show('slide');
         var randomurl = 'http://www.boredapi.com/api/activity/'
         fetch(randomurl)
             .then(function (response) {
@@ -48,18 +63,21 @@ $(document).ready(function () {
                         searchVideos(Activity);
                     })
                 } else {
-                    alert('Error: ' + response.statusText);
+                    $('#modal2 .alert-text').text('Error: ' + response.status);
+                    $('#modal2').modal('open','onCloseEnd');
                 }
             })
             .catch(function (error) {
-                alert('Error connecting to API server');
+                $('#modal2 .alert-text').text(error);
+                $('#modal2').modal('open', 'onCloseEnd');
             });
     }
+
 
     //yt call function
     var searchVideos = function (keywords) {
         //youtube call to get search results of activity searched & video ids
-        var apiKey = 'AIzaSyDPqjwbmgS43b7TLONJZcJ8sGbF1tOhepA';
+        var apiKey = 'AIzaSyDDD98Fh1ECFSuqm-WQwTK1dU7DGg7lgj4';
         var ytUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=' + keywords + `&type=video&videoEmbeddable=true&key=${apiKey}`
         fetch(ytUrl)
             .then(function (response) {
@@ -72,16 +90,19 @@ $(document).ready(function () {
                             var videoId = videoObj.id.videoId;
                             videoIds.push(videoId);
                         })
+
                         //pass videoIds arr to display video function
                         displayVideos(videoIds);
 
                     })
                 } else {
-                    alert('Error ' + response.statusText)
+                    $('#modal2 .alert-text').text('Error: ' + response.status);
+                    $('#modal2').modal('open','onCloseEnd');
                 }
             })
             .catch(function (error) {
-                alert('Error connecting to API youtube server')
+                $('#modal2 .alert-text').text(error);
+                $('#modal2').modal('open', 'onCloseEnd');
             });
     }
 
@@ -117,8 +138,8 @@ $(document).ready(function () {
 
         for (let i = 0; i < favorites.length; i++) {
 
-            var card = '<div class="col s4">' +
-                '<div class="card blue-grey darken-1">' +
+            var card = '<div class="col s12 m12 l4">' +
+                '<div class="card teal darken-1">' +
                 '<div class="card-content white-text">' +
                 '<span class="card-title">Idea For You</span>' +
                 '<ul id="list">' +
@@ -147,17 +168,36 @@ $(document).ready(function () {
 
     //Materialize 
     $('select').formSelect();
+    $('.modal').modal({
+        onCloseEnd: function () { location.reload(); }
+    });
     //Button Listener for random search 
     $('#random').on('click', randomgenerator);
     //capture value of selected category from dropdown on click & initiate call
-    $('#categorySearch').on('click', function () {
+    $('#categorySearch').on('click', function clickSearch(x) {
         // console.log($('.browser-default').val());
         var categoryClicked = $('.browser-default').val();
-        //pass value to make api call
-        categoryCall(categoryClicked);
-        //fade out search container on click
-        $('.searchContainer').toggle('fade');
+        console.log(categoryClicked);
+
+        //validate category
+        if (categoryClicked !== null) {
+            //pass value to make api call
+            categoryCall(categoryClicked);
+            //fade out search container on click
+            $('.searchContainer').hide('fade');
+            $('.resultsContainer').show('slide');
+        } else {
+            // alert('pick a category')
+
+            $('#modal1').modal('open');
+
+        }
+
     });
+    //home button click within search results
+    $('#home').on('click', function () {
+        location.reload();
+    })
     displayfavs();
 
 
@@ -167,7 +207,7 @@ $(document).ready(function () {
 
 
 
-    
+
 });
 
 
