@@ -23,13 +23,13 @@ $(document).ready(function () {
                             catCategory,
                             catParticipants,
                             catPrice
-                          );
+                        );
                         searchVideos(catActivity);
 
                     })
                 } else {
                     $('#modal2 .alert-text').text('Error: ' + response.status);
-                    $('#modal2').modal('open','onCloseEnd');
+                    $('#modal2').modal('open', 'onCloseEnd');
 
 
                 }
@@ -37,7 +37,7 @@ $(document).ready(function () {
             .catch(function (error) {
                 $('#modal2 .alert-text').text(error);
                 $('#modal2').modal('open', 'onCloseEnd');
-                
+
 
             })
 
@@ -68,7 +68,7 @@ $(document).ready(function () {
                     })
                 } else {
                     $('#modal2 .alert-text').text('Error: ' + response.status);
-                    $('#modal2').modal('open','onCloseEnd');
+                    $('#modal2').modal('open', 'onCloseEnd');
                 }
             })
             .catch(function (error) {
@@ -101,135 +101,124 @@ $(document).ready(function () {
                     })
                 } else {
                     $('#modal2 .alert-text').text('Error: ' + response.status);
-                    $('#modal2').modal('open','onCloseEnd');
+                    $('#modal2').modal('open', 'onCloseEnd');
                 }
             })
             .catch(function (error) {
                 $('#modal2 .alert-text').text(error);
                 $('#modal2').modal('open', 'onCloseEnd');
             })
-        }        
-  
-  //passing string to cost,Accessibility.
-  function DisplayResults(param1, param2, param3, param4, param5) {
-    var access = "";
-    var costAll = "";
-
-    if (param5 <= 0.3) {
-      //easy
-      costAll = "Low";
-    } else if (param5 > 0.3 && param5 < 0.8) {
-      //meduim
-      costAll = "Meduim";
-    } else if (param5 > 0.7) {
-      //high
-      costAll = "High";
-
-    } else {
-      costAll = param5;
     }
 
-    if (param2 <= 0.3) {
-      //easy
-      access = "Low accesibility";
-    } else if (param2 > 0.3 && param2 < 0.8) {
-      //meduim
-      access = "Medium accesibility";
-    } else if (param2 > 0.7) {
-      //hard
-      access = "High accesibility";
+    //passing string to cost,Accessibility.
+    function DisplayResults(param1, param2, param3, param4, param5) {
+        var access = "";
+        var costAll = "";
 
-    } else {
-      access = param2;
+        if (param5 <= 0.3) {
+            //easy
+            costAll = "Low";
+        } else if (param5 > 0.3 && param5 < 0.8) {
+            //meduim
+            costAll = "Meduim";
+        } else if (param5 > 0.7) {
+            //high
+            costAll = "High";
+
+        } else {
+            costAll = param5;
+        }
+
+        if (param2 <= 0.3) {
+            //easy
+            access = "Low accesibility";
+        } else if (param2 > 0.3 && param2 < 0.8) {
+            //meduim
+            access = "Medium accesibility";
+        } else if (param2 > 0.7) {
+            //hard
+            access = "High accesibility";
+
+        } else {
+            access = param2;
+        }
+        console.log("accessbility -score ", access);
+        $("#allactivity").text(param1);
+        $("#allaccess").text(access);
+        $("#alltype").text(param3);
+        $("#allparticipants").text(param4);
+        $("#allprice").text(costAll);
     }
-    console.log("accessbility -score ", access);
-    $("#allactivity").text(param1);
-    $("#allaccess").text(access);
-    $("#alltype").text(param3);
-    $("#allparticipants").text(param4);
-    $("#allprice").text(costAll);
-  }
 
 
 
-  //displayVideo function
-  var displayVideos = function (array) {
-    //each method to loop through each element with class=player and change src
-    $(".player").each(function (index) {
-      $(this).attr(
-        "src",
-        `https://www.youtube.com/embed/${array[index]}?enablejsapi=1`
-      );
+    //displayVideo function
+    var displayVideos = function (array) {
+        //each method to loop through each element with class=player and change src
+        $(".player").each(function (index) {
+            $(this).attr(
+                "src",
+                `https://www.youtube.com/embed/${array[index]}?enablejsapi=1`
+            );
+        });
+    };
+
+
+    //Save function
+    $("#save").on("click", function () {
+        var newfav = [];
+        $("#actcontainer")
+            .find("span")
+            .each(function () {
+                var $li = $(this);
+                newfav.push($li.text());
+            });
+        favorites = JSON.parse(localStorage.getItem("favs")) || [];
+        favorites.push(newfav);
+        localStorage.setItem("favs", JSON.stringify(favorites));
+
     });
-  };
-
-  //Materialize
-  $("select").formSelect();
-  //Button Listener for random search
-  $("#random").on("click", randomgenerator);
-  //capture value of selected category from dropdown on click & initiate call
-  $("#categorySearch").on("click", function () {
-    // console.log($('.browser-default').val());
-    var categoryClicked = $(".browser-default").val();
-    //pass value to make api call
-    categoryCall(categoryClicked);
-  });
-
-  //Save function
-  $("#save").on("click", function () {
-    var newfav = [];
-    $("#actcontainer")
-      .find("span")
-      .each(function () {
-        var $li = $(this);
-        newfav.push($li.text());
-      });
-    favorites = JSON.parse(localStorage.getItem("favs")) || [];
-    favorites.push(newfav);
-    localStorage.setItem("favs", JSON.stringify(favorites));
-
-  });
-//displayVideo function
-var displayVideos = function (array) {
-    //each method to loop through each element with class=player and change src
-    $('.player').each(function (index) {
-        $(this).attr('src', `https://www.youtube.com/embed/${array[index]}?enablejsapi=1`)
-    });
-}
-  displayfavs()
-  //Render saved activities
-  function displayfavs(favorites) {
-    favorites = JSON.parse(localStorage.getItem('favs')) || []
-    cardcont = $('#container')
-    $('#container').empty()
-
-    for (let i = 0; i < favorites.length; i++) {
-
-      var card = '<div class="col s12 m12 l4 clickable actCards"  value="' + favorites[i][0] + '" arraynumber=' + i + '>' +
-        '<div class="card teal darken-1">' +
-        '<div class="card-content white-text">' +
-        '<span class="card-title">Saved Activity</span>' +
-        '<ul id="list" >' +
-        '<li>Activity: ' + favorites[i][0] + '</li>' +
-        '<li>Accessibility: ' + favorites[i][1] + '</li>' +
-        '<li>Category: ' + favorites[i][2] + '</li>' +
-        '<li>Number of Participants: ' + favorites[i][3] + '</li>' +
-        '<li>Cost: ' + favorites[i][4] + '</li>' +
-
-        '</ul>' +
-        '</div>' +
-        '</div>' +
-        '</div>';
-      cardcont.append(card)
+    //displayVideo function
+    var displayVideos = function (array) {
+        //each method to loop through each element with class=player and change src
+        $('.player').each(function (index) {
+            $(this).attr('src', `https://www.youtube.com/embed/${array[index]}?enablejsapi=1`)
+        });
     }
-    //Reset Favorites
-    $('#reset').on('click', function () {
-        localStorage.removeItem("favs");
-        location.reload()
+    displayfavs()
+    //Render saved activities
+    function displayfavs(favorites) {
+        favorites = JSON.parse(localStorage.getItem('favs')) || []
+        cardcont = $('#container')
+        $('#container').empty()
 
-    })
+        for (let i = 0; i < favorites.length; i++) {
 
-}
+            var card = '<div class="col s12 m12 l4 clickable actCards"  value="' + favorites[i][0] + '" arraynumber=' + i + '>' +
+                '<div class="card teal darken-1">' +
+                '<div class="card-content white-text">' +
+                '<span class="card-title">Saved Activity</span>' +
+                '<ul id="list" >' +
+                '<li>Activity: ' + favorites[i][0] + '</li>' +
+                '<li>Accessibility: ' + favorites[i][1] + '</li>' +
+                '<li>Category: ' + favorites[i][2] + '</li>' +
+                '<li>Number of Participants: ' + favorites[i][3] + '</li>' +
+                '<li>Cost: ' + favorites[i][4] + '</li>' +
+
+                '</ul>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            cardcont.append(card)
+        }
+        //Reset Favorites
+        $('#reset').on('click', function () {
+            localStorage.removeItem("favs");
+            location.reload()
+
+        })
+
+    }
 
     //Materialize 
     $('select').formSelect();
@@ -239,10 +228,9 @@ var displayVideos = function (array) {
     //Button Listener for random search 
     $('#random').on('click', randomgenerator);
     //capture value of selected category from dropdown on click & initiate call
-    $('#categorySearch').on('click', function clickSearch(x) {
+    $('#categorySearch').on('click', function clickSearch() {
         // console.log($('.browser-default').val());
         var categoryClicked = $('.browser-default').val();
-        console.log(categoryClicked);
 
         //validate category
         if (categoryClicked !== null) {
@@ -265,32 +253,32 @@ var displayVideos = function (array) {
     });
 
 
-  //Clicking card opens results
-  $('.clickable').on('click', function () {
-    var clicked = $(this).attr('value');
-    var arraynumber = $(this).attr('arraynumber');
+    //Clicking card opens results
+    $('.clickable').on('click', function () {
+        var clicked = $(this).attr('value');
+        var arraynumber = $(this).attr('arraynumber');
 
-    favorites = JSON.parse(localStorage.getItem('favs')) || [];
-    favcall = [clicked, arraynumber];
-    localStorage.setItem("favcall", JSON.stringify(favcall));
-    window.open("../index.html")
-  })
+        favorites = JSON.parse(localStorage.getItem('favs')) || [];
+        favcall = [clicked, arraynumber];
+        localStorage.setItem("favcall", JSON.stringify(favcall));
+        window.open("../index.html")
+    })
 
-  //pull favorite card from storage which will be deleted after functions run
-  var favcall = JSON.parse(localStorage.getItem("favcall")) || []
+    //pull favorite card from storage which will be deleted after functions run
+    var favcall = JSON.parse(localStorage.getItem("favcall")) || []
 
-  //if there is a favorite card call send to results page 
-  if (favcall.length > 1) {
-    favorites = JSON.parse(localStorage.getItem('favs')) || []
-    clicked = favcall[0]
-    arraynumber = favcall[1]
+    //if there is a favorite card call send to results page 
+    if (favcall.length > 1) {
+        favorites = JSON.parse(localStorage.getItem('favs')) || []
+        clicked = favcall[0]
+        arraynumber = favcall[1]
 
-    DisplayResults(favorites[arraynumber][0], favorites[arraynumber][1], favorites[arraynumber][2], favorites[arraynumber][3], favorites[arraynumber][4]);
-    searchVideos(clicked);
-    $('.searchContainer').hide('fade');
-    $('.resultsContainer').show('slide');
-    localStorage.removeItem("favcall");
-  }
+        DisplayResults(favorites[arraynumber][0], favorites[arraynumber][1], favorites[arraynumber][2], favorites[arraynumber][3], favorites[arraynumber][4]);
+        searchVideos(clicked);
+        $('.searchContainer').hide('fade');
+        $('.resultsContainer').show('slide');
+        localStorage.removeItem("favcall");
+    }
 
 
 });
