@@ -1,66 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Favorites/Saved</title>
-    <!-- css Reset CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
-    />
 
-    <!-- Framework CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <!-- FontAwesome -->
-    <script
-      src="https://kit.fontawesome.com/6df6b95a29.js"
-      crossorigin="anonymous"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActGen Favs</title>
+  <!-- css Reset CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <!-- googleFonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&display=swap" rel="stylesheet">
+  <!-- Framework CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/6df6b95a29.js" crossorigin="anonymous"></script>
 
-    <!-- our Style sheet -->
-    <link rel="stylesheet" href="./style.css" />
-  </head>
+  <!-- our Style sheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
 
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="../index.html" class="brand-logo center">Favorited Ideas</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="../index.html">Home</a></li>
-        </ul>
-      </div>
-    </nav>
+<body>
+  <nav>
+    <div class="nav-wrapper green lighten-5">
+      <a href="../index.html" class="brand-logo center teal-text text-darken-4">Favorites</a>
+      <ul id="nav-mobile" class="right">
+        <li><a class="teal-text text-darken-4" href="../index.html">Home</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!--three same size container-->
-    <div class="container center-align">
-      
-      <div class="row" id="container">
-        <!--Favorites are appended here-->
-       </div>
-       <a class="waves-effect waves-light btn-large" id="reset">CLEAR</a>
-     </div>      
+  <!--three same size container-->
+  <div class="container center-align">
 
-     
-     <!--jQuery --> 
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <!-- materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- jQueryUI -->
-    <script
-      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-      crossorigin="anonymous"
-    ></script>
-    <!-- our Script -->
-    <script src="./script.js"></script>
-  </body>
+    <div class="row" id="container">
+      <!--Favorites are appended here-->
+    </div>
+    <a class="waves-effect waves-light btn-large" id="reset">CLEAR</a>
+  </div>
+
+  <!--jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- jQueryUI -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <!-- materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- our Script -->
+  <script src="./script.js"></script>
+</body>
+
 </html>

@@ -1,19 +1,75 @@
-body {
-
+/* body {
+overall fonts we want to invoke on page
+} */
+nav{
+    font-family:'Russo One', sans-serif;  
+}
+.searchContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 1rem;
+}
+#categorySearch{
+    margin-top: 10px;
+}
+.card-title-text{
+    font-family:'Russo One', sans-serif;
 }
 .resultsContainer{
     margin-top: 3rem;
+    font-family: 'Open Sans', sans-serif;
 }
 .results {
    text-align: center; 
 }
 .resultsVideo {
-    margin: 1rem;
+    margin: 1rem;    
+}
+.btn-large{
+    background-color: #004d40;
+    font-family: 'Open Sans', sans-serif;
+}
+.btn-large:hover{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
     
 }
-
-.searchContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.btn-large:active{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
+    
 }
+.btn{
+    background-color: #00897b
+    font-family: 'Open Sans', sans-serif;
+}
+.btn:hover{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
+    
+}
+.btn:active{
+    background-color: #00a388;
+    font-family:'Russo One', sans-serif; 
+    
+}
+.card-content p {
+    line-height: 1.5rem;
+}
+.actCards{
+    line-height: 1.5rem;
+}
+.hidden{
+    display: none;
+}
+/* alert */
+.alert-header {
+    font-family:'Russo One', sans-serif; 
+}
+.alert-text{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+}
+
